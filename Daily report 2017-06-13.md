@@ -5,7 +5,7 @@ ____
 ## Ruby loops, variables, ruby methods
 ## Git
 ### Ruby loops
-Loops in ruby are used to execute the same block of code in the specified number of times
+Loops in ruby are used to execute the same block of code in the number of times
 #### for loop
 *syntax:*
 >for variable [, variable, ...] in expression [do]
@@ -72,7 +72,7 @@ end
 {number of time}.times
 _______
 ### variables
-Variables	are	the	memory	locations	which	hold	any	data	to	be	used	by	any	program.
+Variables	hold	any	data	to	be	used	by	any	program.
 There	are	five	types	of	variables	supported	by	Ruby.
 #### Global variables
 Global variables begin with $.
@@ -81,12 +81,12 @@ Global variables begin with $.
 $global_variable = 10
 class Class1
    def print_global
-      puts "Global variable in Class1 is #$global_variable"
+      puts "Class1 is #$global_variable"
    end
 end
 class Class2
    def print_global
-      puts "Global variable in Class2 is #$global_variable"
+      puts "Class2 is #$global_variable"
    end
 end
 
@@ -96,8 +96,8 @@ class2obj = Class2.new
 class2obj.print_global
 ```
 >output
-Global variable in Class1 is 10
-Global variable in Class2 is 10
+Class1 is 10
+Class2 is 10
 
 #### Instance variables
 Instance variables begin with @
@@ -116,21 +116,19 @@ class Customer
    end
 end
 
-# Create Objects
-cust1 = Customer.new("1", "John", "Wisdom Apartments, Ludhiya")
-cust2 = Customer.new("2", "Poul", "New Empire road, Khandala")
+cust1 = Customer.new("1", "John", "ABC")
+cust2 = Customer.new("2", "Poul", "abc")
 
-# Call Methods
 cust1.display_details()
 cust2.display_details()
 ```
 >output
 Customer id 1
 Customer name John
-Customer address Wisdom Apartments, Ludhiya
+Customer address ABC
 Customer id 2
 Customer name Poul
-Customer address New Empire road, Khandala
+Customer address abc
 
 #### Class variables
 Class variables begin with @@
@@ -138,40 +136,35 @@ Class variables begin with @@
 ```ruby
 class Customer
    @@no_of_customers = 0
-   def initialize(id, name, addr)
+   def init(id, name, addr)
       @cust_id = id
       @cust_name = name
       @cust_addr = addr
-   end
-   def display_details()
-      puts "Customer id #@cust_id"
-      puts "Customer name #@cust_name"
-      puts "Customer address #@cust_addr"
+	@@no_of_customers += 1
    end
    def total_no_of_customers()
-      @@no_of_customers += 1
-      puts "Total number of customers: #@@no_of_customers"
+      puts "#@@no_of_customers"
    end
 end
 
-# Create Objects
-cust1 = Customer.new("1", "John", "Wisdom Apartments, Ludhiya")
-cust2 = Customer.new("2", "Poul", "New Empire road, Khandala")
+cust1 = Customer.new("1", "John", "ABC")
+cust1.total_no_of_customers()
 
-# Call Methods
+cust2 = Customer.new("2", "Poul", "abc")
+
 cust1.total_no_of_customers()
 cust2.total_no_of_customers()
 ```
 >output
-Total number of customers: 1
-Total number of customers: 2
+2
+2
 #### Local variables
-Local variables begin with a lowercase or _. The scope of a local variable ranges from class, module, def, or do to the corresponding end or from a block's opening brace to its close brace {}.
+Local variables begin with a lowercase or _. The scope of a local variable ranges from class, module, def, or do to the corresponding.
 #### Constant
-Constants begin with an uppercase letter. Constants defined within a class or module can be accessed from within that class or module, and those defined outside a class or module can be accessed globally.
+Constants begin with an uppercase letter. Constants defined within a class or module can be call within that class or module.
 
 ### Methods
-Ruby methods are used to bundle one or more repeatable statements into a single unit.
+Ruby methods are used for one or more repeatable statements into a single unit.
 Method names should begin with a lowercase letter. 
 *Syntax:*
 >def method_name [(variable, ...)]
@@ -191,21 +184,21 @@ Output:
 "What	up,	Justin!"	
 "What	up,	Ben!"	
 "What	up,	Kevin	Sorbo!"
-
+____
 ### Git
-Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.
-- git clone
-- git pull
-- git add
-- git commit
-- git push
-- git brach
-- git checkout - b
-- pull request
-- git merge
-- git rebase
-- git fetch
-- git stash
-- git reset
+Git is a free and open source distributed version control system designed to handle everything into projects efficiency.
+- git clone: create folder local of project included all of project in server at that time.
+- git pull: synchonous server and local
+- git add: group all file that have changed or new file at local
+- git commit: packing what have been grouped by "git add" and create key for that
+- git push: push what have been committed from local to server
+- git branch: check branch is using current
+- git checkout - b [name of branch]: create new branch and switch to this branch
+- pull request: send request merge from a branch to master
+- git merge: merge code from branch to other branch that commits are arraged by time
+- git rebase: merge code from branch to other branch prioritized for commits of branch using "git rebase"
+- git chery-pick: take a specific commit
+- git stash: push file that haven't finished yet to stack
+- git reset --hard --soft: delete the lasted commit
 - how to fix conflict
 
