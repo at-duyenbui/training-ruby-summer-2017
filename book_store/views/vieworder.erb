@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="<%= url("/css/style.css") %>">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<header id="header">
+	    <div class="div-title">
+	      <div class="container">
+	        <div class="div-title-left clr">
+	          <img class="div-title-logo" src="../images/logo.png" alt="">  
+	          <div class="div-title-name">
+	            <h3>Book store</h3>
+	            <span>Read for good life</span>
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+	    <!-- <div > -->
+	    <nav class="div-menu clr">
+	      <div class="container">
+	        <ul >
+	          <li><a href="./index">Home page</a></li>
+	          <li><a href="./vieworder">View order</a></li>
+	          <li><a href="./books">Manage books</a></li>
+	        </ul> 
+	      </div>  
+	    </nav>
+	    <!-- </div>  -->
+	    <div class="bg">
+	    </div>
+
+  </header><!-- /header -->
+
+  <main class="container ">
+    <div class="select-user col-md-10">
+    	<form action="/userorder" method="get">
+    	<h3>Select user</h3>
+      <select name="iduser" id="user">
+      <% @users.each do |user| %>
+      		<option value="<%= user['iduser'] %>"><%= user['username'] %></option>
+      <% end %>
+			</select>
+			<button class="btn btn-info" type="submit">Filter</button>
+		</form>
+    </div>
+  </main>
+  <footer>
+    <div class="footer-info">
+      <div class="container">
+        
+      </div>
+    </div>
+    <div class="coppy-right clr">
+      
+    </div>
+  </footer>
+</body>
+</html>
