@@ -1,0 +1,30 @@
+<%= form_for @user, html: {role: "form"} do |u| %>
+	<% if  @user.errors.any? %>
+    <div id="error_explanation">
+        <h2>
+            <%= pluralize(@user.errors.count, "error")  %>  prohibited
+            this  article from  being saved:
+        </h2>
+        <ul>
+            <%  @user.errors.full_messages.each do  |msg| %>
+                <li><%= msg %></li>
+            <%  end %>
+        </ul>
+    </div>
+  <% end  %>
+	<p>
+		<%= u.label :name  %><br>
+		<%= u.text_field :name , :class => 'form-control' , :placeholder => 'Input user name' %>
+	</p>
+	<p>
+		<%= u.label :email %><br>
+		<%= u.text_field :email , :class => 'form-control' , :placeholder => 'Input email' %>
+	</p>
+	<p>
+		<%= u.label :password %><br>
+		<%= u.text_field :password , :class => 'form-control' , :placeholder => 'Input password' %>
+	</p>
+	<p>
+		<%= u.submit (@user.new_record? ? 'Add' : 'Update') , :class => 'btn btn-primary' %>
+	</p>
+<% end %>

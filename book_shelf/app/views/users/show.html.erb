@@ -1,0 +1,28 @@
+<section class="wrapper">
+  <div class="row">
+    <div class="col-lg-12">
+      <h3 class="page-header"><i class="fa fa-table"></i> Detail information</h3>
+    </div>
+  </div>
+  <div class="row" style="margin-left: 10%;">
+  	<% if !flash[:notice].blank? %>
+     <div class = "alert alert-info">
+        <%= flash[:notice] %>
+     </div>
+    <% end %>
+    <p>
+			<strong>Name:	</strong>
+			<%= @user.name %>
+		</p>
+		<p>
+			<strong>Email:	</strong>
+			<%= @user.email %>
+		</p>
+		<p>
+			<strong>Password:	</strong>
+			<%= @user.password %>
+		</p>
+
+		<%= link_to "back", users_path %>
+  </div>
+</section>
