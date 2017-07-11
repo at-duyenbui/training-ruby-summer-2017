@@ -9,6 +9,7 @@
     <link rel="shortcut icon" href="img/favicon.png">
 
     <title>BookShelf Rails app demo</title>
+    <%= javascript_include_tag 'application', 'rails' %>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag 'bootstrap.min' %>
     <%= stylesheet_link_tag 'bootstrap-theme' %>
@@ -65,7 +66,6 @@
     <%= javascript_include_tag 'bootstrap.min' %>
     <%= javascript_include_tag 'jquery.scrollTo.min' %>
     <%= javascript_include_tag 'jquery.nicescroll' %>
-    <%= javascript_include_tag 'application', 'rails' %>
   </body>
 </html>
 
