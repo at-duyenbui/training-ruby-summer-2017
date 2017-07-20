@@ -21,12 +21,12 @@
 		<%= f.text_field :author , :class => 'form-control' , :placeholder => 'Author' %>
 	</p>
 	<p>
-		<%= f.label :price %><br>
-		<%= f.text_field :price , :class => 'form-control' , :placeholder => 'Price' %>
+		<%= f.label :title %><br>
+		<%= f.text_field :title , :class => 'form-control' , :placeholder => 'Price' %>
 	</p>
 	<p>
-		<%= f.label :image %><br>
-		<%= f.file_field :image %>
+		<%= f.label :isn %><br>
+		<%= f.text_field :isn , :class => 'form-control' , :placeholder => 'Isn' %>
 	</p>
 	<p>
 		<%= f.submit (@book.persisted? ? 'Update' : 'Add') , :class => 'btn btn-primary' %>

@@ -6,28 +6,27 @@
   </div>
   <div class="row" style="margin: 0% 15%;">
 		<% if !flash[:notice].blank? %>
-     <div class = "alert alert-info">
+      <div class = "alert alert-info">
         <%= flash[:notice] %>
-     </div>
+      </div>
     <% end %>
-    <div class="col-lg-4">
-    	<p>
-			  <%= image_tag @book.image.url %>
-			</p>
-    </div>
     <div class="col-lg-6" style="font-size: 16px;">
     	<p>
 				<strong>Book's name:	</strong>
-				<%= @book.bookname %>
+				<%= @book.name %>
 			</p>
 			<p>
 				<strong>Author:	</strong>
 				<%= @book.author %>
 			</p>
 			<p>
-				<strong>Price:	</strong>
-				<%= @book.price %>
+				<strong>Title:	</strong>
+				<%= @book.title %>
 			</p>
+      <p>
+        <strong>Isn:  </strong>
+        <%= @book.isn %>
+      </p>
 			<%= link_to "back", books_path %>
     </div>
   </div>

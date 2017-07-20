@@ -39,9 +39,12 @@ class BooksController < ApplicationController
 		redirect_to action: 'index'
 	end
 
+# ham truyen params chung
 	private
 	def book_params
-		params.require(:book).permit(:bookname, :author, :price, :image)
+		params.require(:book).permit(:bookname, :author, :title, :isn)
+		#ex: (book: params[:book][:bookname])
+		# permit: chi lay nhung truong can dung den theo yeu cau
 	end
 
 end

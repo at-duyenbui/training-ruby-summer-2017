@@ -25,6 +25,10 @@
 		<%= u.text_field :password , :class => 'form-control' , :placeholder => 'Input password' %>
 	</p>
 	<p>
+		<%= u.label :avatar %><br>
+		<%= u.file_field :avatar %>
+	</p>
+	<p>
 		<%= u.submit (@user.new_record? ? 'Add' : 'Update') , :class => 'btn btn-primary' %>
 	</p>
 <% end %>

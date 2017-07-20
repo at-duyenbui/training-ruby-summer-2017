@@ -1,18 +1,11 @@
 # == Schema Information
 #
-# Table name: users
+# Table name: orders
 #
 #  id         :integer          not null, primary key
-#  user_name  :string(255)
-#  password   :string(255)
-#  email      :string(255)
-#  name       :string(255)
-#  gender     :integer
-#  birthday   :datetime
-#  role       :integer
-#  avatar     :string(255)
-#  provider   :string(255)
-#  uid        :string(255)
+#  cart_id    :integer
+#  book_id    :integer
+#  quantity   :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

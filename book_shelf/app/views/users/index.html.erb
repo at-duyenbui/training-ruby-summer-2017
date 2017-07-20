@@ -15,16 +15,16 @@
               <tr>
                  <th>User Name</th>
                  <th>Email</th>
+                 <th>Role</th>
+                 <th>Name</th>
+                 <th>Gender</th>
                  <th>Action</th>
               </tr>
+              <%= render partial: "product", collection: @users %>
             </tbody>
-            <%= render partial: "user", collection: @users %>
             </table>
             <p><%= link_to "Add new user", new_user_path %></p>
           </section>
       </div>
   </div>
 </section>
-
-
-

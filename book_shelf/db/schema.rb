@@ -10,21 +10,51 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170707101235) do
+ActiveRecord::Schema.define(version: 20170718114054) do
 
   create_table "books", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "bookname"
+    t.string   "name"
     t.string   "author"
-    t.float    "price",      limit: 24
+    t.string   "title"
+    t.string   "isn"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "carts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.text     "content",    limit: 65535
     t.string   "image"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.integer  "user_id"
+    t.integer  "rating"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  create_table "orders", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "cart_id"
+    t.integer  "book_id"
+    t.integer  "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name"
+    t.string   "user_name"
     t.string   "password"
     t.string   "email"
+    t.string   "name"
+    t.integer  "gender"
+    t.datetime "birthday"
+    t.integer  "role"
+    t.string   "avatar"
+    t.string   "provider"
+    t.string   "uid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

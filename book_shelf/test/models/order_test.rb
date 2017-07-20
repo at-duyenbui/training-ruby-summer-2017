@@ -1,19 +1,18 @@
 # == Schema Information
 #
-# Table name: books
+# Table name: orders
 #
 #  id         :integer          not null, primary key
-#  name       :string(255)
-#  author     :string(255)
-#  title      :string(255)
-#  isn        :string(255)
+#  cart_id    :integer
+#  book_id    :integer
+#  quantity   :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
 require 'test_helper'
 
-class BookTest < ActiveSupport::TestCase
+class OrderTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
