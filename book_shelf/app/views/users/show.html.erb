@@ -10,9 +10,11 @@
         <%= flash[:notice] %>
      </div>
     <% end %>
-    <div class="col-lg-4">
-      <%= image_tag @user.avatar %>
-    </div>
+    <% if @user.avatar.present? %>
+      <div class="col-lg-4">
+        <%= image_tag @user.avatar %>
+      </div>
+    <% end %>
     <div class="col-lg-6" style="font-size: 16px;">
       <p>
   			<strong>Name:	</strong>

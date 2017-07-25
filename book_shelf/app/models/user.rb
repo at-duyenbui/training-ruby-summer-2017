@@ -18,32 +18,33 @@
 #
 
 class User < ApplicationRecord
-	mount_uploader :image, ImageUploader
-	
-	enum gender: %w(male female other)
-	enum role: %w(member mod admin)
+  has_secure_password
+  mount_uploader :image, ImageUploader
+  enum gender: %w[male female other]
+  enum role: %w[member mod admin]
 
-	validates :user_name, :password , presence: true
-	validates :user_name, :email, uniqueness: true
-	validates :email, presence:true, if: :provider?
-	def provider?
-		provider == "email"
-	end
-	validates :name, length: { in: 6 .. 30 }, allow_blank: true
-	validate :birth?
-	def birth?
-		self.errors.add(:birthday, "Errors birthday") if birthday.present? && Time.now - 17.years <= birthday
-	end
-	validate :avatar_size
-		def avatar_size
-			if avatar.size > 5.megabytes
-				self.errors.add(:avatar, "Avatar's size have to less than 5Mb")
-			end
-		end
+  validates :user_name, :password, presence: true
+  validates :user_name, :email, uniqueness: true
 
-	validates_uniqueness_of :provider, scope: :uid
-	# validates :uid, uniqueness: { scope: :provider}
+  validates :email, presence: true, if: :provider?
+  def provider?
+    provider == 'email'
+  end
 
-	has_many :carts
-	has_many :comments
+  validates :name, length: { in: 6..30 }, allow_blank: true
+
+  validate :birth?
+  def birth?
+    errors.add(:birthday, 'Errors birthday') if birthday.present? && Time.now - 17.years <= birthday
+  end
+  validate :avatar_size
+  def avatar_size
+    errors.add(:avatar, 'Size of avatar have to less than 5Mb') if avatar.present? && avatar.size > 5.megabytes
+  end
+
+  validates_uniqueness_of :provider, scope: :uid
+  # validates :uid, uniqueness: { scope: :provider}
+
+  has_many :carts
+  has_many :comments
 end

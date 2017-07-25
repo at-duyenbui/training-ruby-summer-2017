@@ -9,29 +9,34 @@
 # arr = ['facebook', 'gplus', 'email']
 
 # 50.times do |i|
-# 	User.create(user_name: Faker::Internet.user_name,
-# 							email: Faker::Internet.email,
-# 							password: Faker::Internet.password(8),
-# 							name: Faker::Name.name,
-# 							gender: rand(0..2),
-# 							birthday: Faker::Date.birthday(17, 65),
-# 							role: rand(0..2),
-# 							avatar: Faker::Avatar.image,
-# 							provider: "#{arr[rand(0..2)]}",
-# 							uid: Faker::Internet.free_email)
+#   User.create(user_name: Faker::Internet.user_name,
+#     email: Faker::Internet.email,
+#     password: '123456',
+#     name: Faker::Name.name,
+#     gender: rand(0..2),
+#     birthday: Faker::Date.birthday(17, 65),
+#     role: rand(0..2),
+#     avatar: Faker::Avatar.image,
+#     provider: "#{arr[rand(0..2)]}",
+#     uid: Faker::Internet.free_email,
+#     confirm_token: rand(100000..999999),
+#     confirm_send_at: Faker::Time.between(DateTime.now - 1, DateTime.now),
+#     confirm_at: Faker::Time.between(DateTime.now - 1, DateTime.now),
+#     reset_password_token: rand(100000..999999),
+#     reset_password_send_at: Faker::Time.between(DateTime.now - 1, DateTime.now))
 # end
 
 # 300.times do |e|
-# 	Book.create(name: Faker::Book.title,
-# 							author: Faker::Book.author,
-# 							title: "title #{e}",
-# 							isn: Faker::Number.hexadecimal(12))
+#   Book.create(name: Faker::Book.title,
+#     author: Faker::Book.author,
+#     title: "title #{e}",
+#     isn: Faker::Number.hexadecimal(12))
 # end
 
 # 30.times do
-# 	Cart.create(user_id: rand(User.count))
+#   Cart.create(user_id: User.all.ids[rand(User.count)])
 # end
 
-30.times do
-	Order.create(cart_id: User.all.ids[rand(User.count)])
-end
+# 30.times do
+#   Order.create(cart_id: User.all.ids[rand(User.count)])
+# end

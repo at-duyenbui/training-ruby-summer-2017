@@ -12,13 +12,13 @@
 #
 
 class Book < ApplicationRecord
-	validates :name, presence: true
+  validates :name, presence: true
 
-	has_many :orders
-	has_many :carts, :through => :orders
-	has_many :comments
+  has_many :orders
+  has_many :carts, through: :orders
+  has_many :comments
 
-	scope :search_book_by_author , lambda{|author, users_id| 
-		joins(:carts).where("books.author like :author_name and carts.user_id = :users_id", author_name: author, users_id: users_id)
-	}
+  scope :search_book_by_author, lambda { |author, users_id|
+    joins(:carts).where('books.author like :author_name and carts.user_id = :users_id', author_name: author, users_id: users_id)
+  }
 end

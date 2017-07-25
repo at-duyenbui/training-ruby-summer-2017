@@ -38,6 +38,18 @@
                     </li>                    
                 </ul>
             </div>
+            <div class="top-nav notification-row">                
+                <ul class="nav pull-right top-menu">
+                      <% if logged_in? %>
+                        <li class="dropdown">
+                          <%= link_to "Logout", logout_path %>
+                        </li>
+                      <% else %>
+                        <%= link_to "Login", login_path %> |
+                        <%= link_to "Sign up", signup_path %>
+                      <% end %>
+                </ul>
+            </div>
       </header>      
       <aside>
           <div id="sidebar"  class="nav-collapse ">
