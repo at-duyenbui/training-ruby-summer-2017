@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <link rel="stylesheet" href="">
+</head>
+<body>
+  <%= form_tag("/update_token", method: "post") do %>
+  <p>
+    <span>Please input your email which you sign up with BookShelf</span><br>
+    <%= text_field_tag 'email' %>
+  </p>
+  <p>
+    <%= submit_tag %>
+  </p>
+  <% end %>
+</body>
+</html>

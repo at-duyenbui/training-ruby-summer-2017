@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <link rel="stylesheet" href="">
+</head>
+<body>
+  <p>Please input your confirm token</p>
+  <%= form_tag("/confirm_account", method: "post") do %>
+    <%= text_field_tag 'confirm_token' %>
+    <%= submit_tag("Confirm") %>
+  <% end %>
+</body>
+</html>

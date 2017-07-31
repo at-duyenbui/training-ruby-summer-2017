@@ -1,9 +1,8 @@
 class UsersController < ApplicationController
   layout 'main'
 
+  before_action :set_user, only: %i[show edit update destroy]
   before_action :total_page, only: [:index]
-
-  PAGE_NUM = 10
 
   # get /users
   def index
@@ -15,7 +14,7 @@ class UsersController < ApplicationController
         @page = @total_page
         redirect_to users_path(page: @page)
       end
-      @users = User.all.limit(PAGE_NUM).offset((@page - 1) * PAGE_NUM)
+      @users = User.where.not(confirm_at: '').limit(ENV['LIMIT'].to_i).offset((@page - 1) * ENV['LIMIT'].to_i)
     end
   end
 
@@ -29,31 +28,26 @@ class UsersController < ApplicationController
     @user = User.new(new_user_param)
     @user.uid = @user.email
     @user.provider = 'email'
+    @user.confirm_token = rand(100000..999999)
+    @user.confirm_send_at = Time.now
     if @user.save
       UserMailer.welcome_email(@user).deliver_now
-      # log_in @user
-      # flash[:success] = "Welcome!"
-      redirect_to login_path
+      flash[:success] = 'Please confirm your email address to continues'
+      redirect_to root_path
     else
+      flash[:error] = 'Sorry, something went wrong!'
       render 'new'
     end
   end
 
   # get users/:id/edit
-  def edit
-    @user = User.find(params[:id])
-    # byebug
-  end
+  def edit; end
 
   # get users/:id
-  def show
-    @user = User.find(params[:id])
-  end
+  def show; end
 
   # put users/:id
   def update
-    # byebug
-    @user = User.find(params[:id])
     avatar = params[:avatar]
     params[:user][:avatar] = @user.avatar if avatar.present? == false
     @user.update(user_param)
@@ -62,23 +56,30 @@ class UsersController < ApplicationController
 
   # delete users/:id
   def destroy
-    @user = User.find(params[:id])
     @user.destroy
     redirect_to action: 'index'
   end
 
   private
 
+  def set_user
+    @user = User.find(params[:id])
+  end
+
   def user_param
     params.require(:user).permit(:name, :password, :email, :user_name, :gender, :birthday, :role, :provider, :uid)
   end
 
   def new_user_param
-    params.require(:user).permit(:user_name, :email, :password, :uid, :provider)
+    params.require(:user).permit(:user_name, :email, :password, :password_confirmation, :uid, :provider, :confirm_token, :confirm_send_at)
   end
 
   def total_page
     @total = User.all.count
-    @total_page = (@total % PAGE_NUM).zero? ? @total / PAGE_NUM : @total / PAGE_NUM + 1
+    @total_page = (@total % ENV['LIMIT'].to_i).zero? ? @total / ENV['LIMIT'].to_i : @total / ENV['LIMIT'].to_i + 1
   end
+
+  # def confirm_token
+  #   self.confirm_token = rand(100000..999999) if self.confirm_token.blank?
+  # end
 end
