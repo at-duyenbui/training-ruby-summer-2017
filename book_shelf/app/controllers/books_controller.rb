@@ -1,50 +1,51 @@
 class BooksController < ApplicationController
+  before_action :set_book, only: %i[show edit update destroy]
 
-	layout 'main'
+  def index
+    @books = Book.all
+    render json: @books, each_serializer: Books::IndexSerializer
+  end
 
-	def index
-		@books = Book.all
-	end
+  def new
+    @book = Book.new
+  end
 
-	def new
-		@book = Book.new
-	end
+  def create
+    @book = Book.new(book_params)
+    if @book.save
+      render json: @book, serializer: Books::ShowSerializer, status: :created
+      '<p> created </p>'
+      # redirect_to @book, notice: 'Add new book successful'
+    else
+      render json: @book.errors, status: :unprocessable_entity
+      'errors'
+      # render :new
+    end
+  end
 
-	def create
-		@book = Book.new(book_params)
-		if @book.save
-			redirect_to @book, notice: "Add new book successful"
-		else
-			render new
-		end
-	end
+  def show
+    render json: @book, serializer: Books::ShowSerializer
+  end
 
-	def show
-		@book = Book.find(params[:id])
-	end
+  def edit; end
 
-	def edit
-		@book = Book.find(params[:id])
-	end
+  def update
+    @book.update(book_params)
+    redirect_to @book
+  end
 
-	def update
-		@book = Book.find(params[:id])
-		@book.update(book_params)
-		redirect_to @book
-	end
+  def destroy
+    @book.destroy
+    redirect_to action: 'index'
+  end
 
-	def destroy
-		@book = Book.find(params[:id])
-		@book.destroy
-		redirect_to action: 'index'
-	end
+  private
 
-# ham truyen params chung
-	private
-	def book_params
-		params.require(:book).permit(:bookname, :author, :title, :isn)
-		#ex: (book: params[:book][:bookname])
-		# permit: chi lay nhung truong can dung den theo yeu cau
-	end
+  def book_params
+    params.permit(:name, :author, :title, :isn)
+  end
 
+  def set_book
+    @book = Book.find(params[:id])
+  end
 end

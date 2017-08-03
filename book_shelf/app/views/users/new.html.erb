@@ -1,21 +1,48 @@
 <section class="wrapper">
   <div class="row">
-    <div class="col-lg-12">
-      <h3 class="page-header"><i class="fa fa-table"></i> Add new user</h3>
+    <div class="col-lg-6" style="margin:0 25%;">
+      <section class="panel">
+        <header class="panel-heading">
+          Forms
+        </header>
+        <div class="panel-body">
+          <%= form_for @user, html: {role: "form"} do |f| %>
+          <% if  @user.errors.any? %>
+          <div id="error_explanation">
+            <h2>
+              <%= pluralize(@user.errors.count, "error")  %>  prohibited
+              this  article from  being saved:
+            </h2>
+            <ul>
+              <%  @user.errors.full_messages.each do  |msg| %>
+              <li><%= msg %></li>
+              <%  end %>
+            </ul>
+          </div>
+          <% end  %>
+          <p>
+            <%= f.label :user_name  %><br>
+            <%= f.text_field :user_name , :class => 'form-control' , :placeholder => 'Input user name' %>
+          </p>
+          <p>
+            <%= f.label :email %><br>
+            <%= f.text_field :email , :class => 'form-control' , :placeholder => 'Input email' %>
+          </p>
+          <p>
+            <%= f.label :password %><br>
+            <%= f.password_field :password , :class => 'form-control' , :placeholder => 'Input password' %>
+          </p>
+          <p>
+            <%= f.label :password_confirmation, "Confirmation" %>
+            <%= f.password_field :password_confirmation %>
+          </p>
+          <p>
+            <%= f.submit "Sign up" , :class => 'btn btn-primary' %>
+          </p>
+          <% end %>
+          <%= link_to "back", users_path %>
+        </div>
+      </section>
     </div>
-  </div>
-  <div class="row">
-      <div class="col-lg-6" style="margin:0 25%;">
-          <section class="panel">
-            <header class="panel-heading">
-                Forms
-            </header>
-            <div class="panel-body">
-                <%= render 'form' %>
-
-								<%= link_to "back", users_path %>
-            </div>
-          </section>
-      </div>
   </div>
 </section>

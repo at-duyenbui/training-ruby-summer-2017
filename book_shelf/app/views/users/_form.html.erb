@@ -13,8 +13,8 @@
     </div>
   <% end  %>
 	<p>
-		<%= u.label :name  %><br>
-		<%= u.text_field :name , :class => 'form-control' , :placeholder => 'Input user name' %>
+		<%= u.label :user_name  %><br>
+		<%= u.text_field :user_name , :class => 'form-control' , :placeholder => 'Input user name' %>
 	</p>
 	<p>
 		<%= u.label :email %><br>
@@ -22,11 +22,31 @@
 	</p>
 	<p>
 		<%= u.label :password %><br>
-		<%= u.text_field :password , :class => 'form-control' , :placeholder => 'Input password' %>
+		<%= u.password_field :password , :class => 'form-control' , :placeholder => 'Input password' %>
 	</p>
 	<p>
-		<%= u.label :avatar %><br>
-		<%= u.file_field :avatar %>
+		<%= u.label :name %><br>
+		<%= u.text_field :name , :class => 'form-control' , :placeholder => 'Full name' %>
+	</p>
+	<p>
+		<%= u.label :gender %><br>
+		<%= u.select :gender , ['male', 'female', 'other'], :class => 'form-control'  %>
+	</p>
+	<p>
+		<%= u.label :birthday %><br>
+		<%= u.date_field :birthday , :class => 'form-control' %>
+	</p>
+	<p>
+		<%= u.label :role %><br>
+		<%= u.select :role , ['member', 'mod', 'admin'], :class => 'form-control' %>
+	</p>
+	<p>
+		<%= u.label :provider %><br>
+		<%= u.select :provider , ['facebook', 'gplus', 'email'], :class => 'form-control' %>
+	</p>
+	<p>
+		<%= u.label :uid %><br>
+		<%= u.text_field :uid , :class => 'form-control' , :placeholder => 'Input uid' %>
 	</p>
 	<p>
 		<%= u.submit (@user.new_record? ? 'Add' : 'Update') , :class => 'btn btn-primary' %>
