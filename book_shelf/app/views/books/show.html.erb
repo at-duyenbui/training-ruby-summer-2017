@@ -10,6 +10,11 @@
         <%= flash[:notice] %>
       </div>
     <% end %>
+    <% if @book.image.present? %>
+      <div class="col-lg-4">
+        <%= image_tag @book.image %>
+      </div>
+    <% end %>
     <div class="col-lg-6" style="font-size: 16px;">
     	<p>
 				<strong>Book's name:	</strong>

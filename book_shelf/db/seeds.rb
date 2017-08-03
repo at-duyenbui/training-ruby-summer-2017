@@ -8,6 +8,7 @@
 
 # arr = ['facebook', 'gplus', 'email']
 
+# puts 'User'
 # 50.times do |i|
 #   User.create(user_name: Faker::Internet.user_name,
 #     email: Faker::Internet.email,
@@ -26,17 +27,21 @@
 #     reset_password_send_at: Faker::Time.between(DateTime.now - 1, DateTime.now))
 # end
 
+# puts 'Book'
 # 300.times do |e|
 #   Book.create(name: Faker::Book.title,
 #     author: Faker::Book.author,
 #     title: "title #{e}",
+#     image: 'doraemon.png',
 #     isn: Faker::Number.hexadecimal(12))
 # end
 
+# puts 'Cart'
 # 30.times do
 #   Cart.create(user_id: User.all.ids[rand(User.count)])
 # end
 
+# puts 'Order'
 # 30.times do
 #   Order.create(cart_id: User.all.ids[rand(User.count)])
 # end

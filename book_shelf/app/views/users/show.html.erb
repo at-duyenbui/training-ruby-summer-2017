@@ -6,50 +6,50 @@
   </div>
   <div class="row" style="margin-left: 10%;">
   	<% if !flash[:notice].blank? %>
-     <div class = "alert alert-info">
+      <div class = "alert alert-info">
         <%= flash[:notice] %>
-     </div>
-    <% end %>
-    <% if @user.avatar.present? %>
-      <div class="col-lg-4">
-        <%= image_tag @user.avatar %>
       </div>
-    <% end %>
-    <div class="col-lg-6" style="font-size: 16px;">
-      <p>
-  			<strong>Name:	</strong>
-  			<%= @user.user_name %>
-  		</p>
-  		<p>
-  			<strong>Email:	</strong>
-  			<%= @user.email %>
-  		</p>
-  		<p>
-  			<strong>Name:	</strong>
-  			<%= @user.name %>
-  		</p>
-      <p>
-        <strong>Gender: </strong>
-        <%= @user.gender %>
-      </p>
-      <p>
-        <strong>Birthday: </strong>
-        <%= @user.birthday %>
-      </p>
-      <p>
-        <strong>Role: </strong>
-        <%= @user.role %>
-      </p>
-      <p>
-        <strong>Provider: </strong>
-        <%= @user.provider %>
-      </p>
-      <p>
-        <strong>Uid: </strong>
-        <%= @user.uid %>
-      </p>
-
-  		<%= link_to "back", users_path %>
-    </div>
+  <% end %>
+  <% if @user.avatar.present? %>
+  <div class="col-lg-4">
+    <%= image_tag @user.avatar %>
   </div>
+  <% end %>
+  <div class="col-lg-6" style="font-size: 16px;">
+    <p>
+     <strong>Name:	</strong>
+     <%= @user.user_name %>
+   </p>
+   <p>
+     <strong>Email:	</strong>
+     <%= @user.email %>
+   </p>
+   <p>
+     <strong>Name:	</strong>
+     <%= @user.name %>
+   </p>
+   <p>
+    <strong>Gender: </strong>
+    <%= @user.gender %>
+  </p>
+  <p>
+    <strong>Birthday: </strong>
+    <%= @user.birthday %>
+  </p>
+  <p>
+    <strong>Role: </strong>
+    <%= @user.role %>
+  </p>
+  <p>
+    <strong>Provider: </strong>
+    <%= @user.provider %>
+  </p>
+  <p>
+    <strong>Uid: </strong>
+    <%= @user.uid %>
+  </p>
+
+  <%= link_to "back", users_path %>
+</div>
+</div>
 </section>

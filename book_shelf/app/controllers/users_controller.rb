@@ -1,6 +1,4 @@
 class UsersController < ApplicationController
-  layout 'main'
-
   before_action :set_user, only: %i[show edit update destroy]
   before_action :total_page, only: [:index]
 
@@ -44,7 +42,9 @@ class UsersController < ApplicationController
   def edit; end
 
   # get users/:id
-  def show; end
+  def show
+    render json: @user, serializer: Users::ShowSerializer
+  end
 
   # put users/:id
   def update

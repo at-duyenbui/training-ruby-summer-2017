@@ -6,6 +6,7 @@
 #  name       :string(255)
 #  author     :string(255)
 #  title      :string(255)
+#  image      :string(255)
 #  isn        :string(255)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null

@@ -1,11 +1,9 @@
 class BooksController < ApplicationController
-  layout 'main'
-
   before_action :set_book, only: %i[show edit update destroy]
 
   def index
     @books = Book.all
-    render json: @books
+    render json: @books, each_serializer: Books::IndexSerializer
   end
 
   def new
@@ -15,14 +13,18 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
     if @book.save
-      redirect_to @book, notice: 'Add new book successful'
+      render json: @book, serializer: Books::ShowSerializer, status: :created
+      '<p> created </p>'
+      # redirect_to @book, notice: 'Add new book successful'
     else
-      render :new
+      render json: @book.errors, status: :unprocessable_entity
+      'errors'
+      # render :new
     end
   end
 
   def show
-    render json: @book
+    render json: @book, serializer: Books::ShowSerializer
   end
 
   def edit; end
@@ -40,7 +42,7 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:bookname, :author, :title, :isn)
+    params.permit(:name, :author, :title, :isn)
   end
 
   def set_book
