@@ -1,0 +1,32 @@
+version: '2'
+services:
+  mysql:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: '123456'
+    ports:
+      - '3308:3306'
+  
+  postgres:
+    image: orchardup/postgresql
+    environment:
+      POSTGRESQL_PASS: kien
+      POSTGRESQL_USER: kien
+    ports:
+      - '5433:5432'
+
+  app:
+    build: .
+    environment:
+      RAILS_ENV: development
+      SECRET_KEY_BASE: abcd
+    expose:
+      - '3000'
+    ports:
+      - '3000:3000'
+    volumes:
+      - .:/usr/src/app
+    tty: true
+    links:
+      - mysql
+      - postgres

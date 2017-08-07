@@ -7,10 +7,10 @@
 default: &default
   adapter: mysql2
   username: root
-  password: 15101995ngocduy
+  password: 123456
   pool: 5
   timeout: 5000
-  host: localhost
+  host: mysql
   encoding: utf8
 
 development:
