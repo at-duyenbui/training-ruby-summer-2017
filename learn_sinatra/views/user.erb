@@ -1,0 +1,11 @@
+<table>
+	<tbody>
+	<%@user.each do |user|  %>
+		<tr>
+			<td><%= user['id'] %></td>
+			<td><%= user['username'] %></td>
+			<td><%= user['address'] %></td>
+		</tr>
+		<%end%>
+	</tbody>
+</table>
